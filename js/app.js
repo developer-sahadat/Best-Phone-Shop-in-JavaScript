@@ -2,38 +2,64 @@
 
     document.getElementById('search_btn').addEventListener('click', ()=>{
         // search input field
-        const input_field=document.getElementById('search-input').value; 
-       const url=`https://openapi.programming-hero.com/api/phones?search=${input_field}`
-       fetch(url)
-       .then(Response=>Response.json())
-       .then(data=>products_section(data.data.slice(0,20)))
-       document.getElementById('search-input').value=''
+        const input_field=document.getElementById('search-input').value;
+
+        //input error handling
+
+        if(input_field==''){
+            const h2=document.getElementById('error_message');
+            h2.innerText='Plsease search by entering the product name'
+            document.getElementById('products-section').textContent=''
+            document.getElementById('product-details-page').textContent=''
+            
+        }else{
+            const url=`https://openapi.programming-hero.com/api/phones?search=${input_field}`
+            fetch(url)
+            .then(Response=>Response.json())
+            .then(data=>products_section(data.data.slice(0,20)))
+            document.getElementById('search-input').value=''
+
+        }
     })
 
     
-    // products function code start
-
+// products function code start
     const products_section=(phones)=>{
         
-        // all products parent
-        const parent=document.getElementById('products-section')
-            parent.textContent='';
-        phones.forEach(phone => {
-            
-            // A div has been created here
-            const div=document.createElement('div');
-            div.innerHTML=`
-            <div class="shadow rounded-3">
-            <img src="${phone.image}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title fw-bolder py-2">Name: ${phone.phone_name}</h5>
-              <h5 class="card-title fw-bolder">Brand: ${phone.brand}</h5>
-              <button href="#" class="custom-button-style my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="products_details('${phone.slug}')">Details Now</button>
-            </div>
-          </div>
-            `
-        parent.appendChild(div)
-        })
+        //error message empty
+        document.getElementById('error_message').innerText=''
+
+        if(phones.length=='0'){
+            const h2=document.getElementById('error_message');
+            h2.innerText=`Oops! We couldn't find results for your search:`
+            document.getElementById('products-section').textContent=''
+            document.getElementById('product-details-page').textContent=''
+        }else{
+
+            const parent=document.getElementById('products-section')
+                parent.textContent='';
+            phones.forEach(phone => {
+                
+                // A div has been created here
+                const div=document.createElement('div');
+
+                div.innerHTML=`
+                <div class="shadow rounded-3">
+                <img src="${phone.image}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fw-bolder py-2">Name: ${phone.phone_name}</h5>
+                  <h5 class="card-title fw-bolder">Brand: ${phone.brand}</h5>
+                  <button href="#" class="custom-button-style my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="products_details('${phone.slug}')">Details Now</button>
+                </div>
+              </div>
+                `
+            parent.appendChild(div)
+
+            })
+
+        }
+
+       
 
     }
 
@@ -55,12 +81,13 @@
 
      // product details page function code start:
         const details_page=details=>{
+            //error message empty
+            document.getElementById('error_message').innerText=''
 
-            console.log(details);
-
+            
             const parent=document.getElementById('product-details-page')
             parent.textContent=""
-
+            
             // A div has been created here
             const div=document.createElement('div');
 
