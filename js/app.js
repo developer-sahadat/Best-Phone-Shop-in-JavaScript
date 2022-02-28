@@ -44,7 +44,7 @@
                 const div=document.createElement('div');
 
                 div.innerHTML=`
-                <div class="shadow rounded-3">
+                <div class="shadow rounded-3 p-3">
                 <img src="${phone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title fw-bolder py-2">Name: ${phone.phone_name}</h5>
@@ -81,6 +81,7 @@
 
      // product details page function code start:
         const details_page=details=>{
+            console.log(details);
             //error message empty
             document.getElementById('error_message').innerText=''
 
@@ -100,25 +101,33 @@
                 </div>
                 <div class="modal-body">
                 <div class="d-flex m-2 justify-content-center align-items-center ">
-                <div class="card border-0 shadow-none  w-50">
-                <img src="${details.data.image}" class=" img-fluied rounded-start" alt="...">
+                <div class="card border-0   w-50">
+                <img src="${details.data.image}" class=" img-fluid rounded-start" alt="...">
                     
                 </div>
                 <div class="ms-5 w-50">
-                    <p > <span class='h6 fw-bolder'>Release Date:</span> 
-                    ${details.data.releaseDate}</p>
-                    <p > <span class='h6 fw-bolder'>Chip Set:</span> ${details.data.mainFeatures.chipSet}</p>
-                    <p > <span class='h6 fw-bolder'>Memory:</span> ${details.data.mainFeatures.memory}</p>
-                    <p > <span class='h6 fw-bolder'>Display Size:</span> ${details.data.mainFeatures.displaySize}</p>
-                    <p > <span class='h6 fw-bolder'>Storage:</span> ${details.data.mainFeatures.storage}</p>
-                    <p > <span class='h6 fw-bolder'>Sensors:</span> ${details.data.mainFeatures.sensors}</p>
-                    <p > <span class='h6 fw-bolder'>Bluetooth:</span> ${details.data.others.Bluetooth}</p>
-                    
-                    <p > <span class='h6 fw-bolder'>GPS:</span> ${details.data.others.GPS}</p>
-                    <p > <span class='h6 fw-bolder'>NFC:</span> ${details.data.others.NFC}</p>
-                    <p > <span class='h6 fw-bolder'>NFC:</span> ${details.data.others.Radio}</p>
-                    <p > <span class='h6 fw-bolder'>NFC:</span> ${details.data.others.USB}</p>
-                    <p > <span class='h6 fw-bolder'>NFC:</span> ${details.data.others.WLAN}</p>
+
+                <h4 class="card-title fw-bolder py-2">${details.data.name}</h4>
+                <h6 class="card-title fw-bolder">${details.data.brand}</h6>
+                <p>${details.data.releaseDate}</p>
+                <hr>
+                
+                <h6 style='border-bottom:1px solid gray; ' class='w-50 p-1 bold'>Main Features</h6>
+                    <p > Chip Set: ${details.data.mainFeatures.chipSet}</p>
+                    <p >Memory: ${details.data.mainFeatures.memory}</p>
+                    <p >Display Size: ${details.data.mainFeatures.displaySize}</p>
+                    <p > Storage:${details.data.mainFeatures.storage}</p>
+                    <p > Sensors: ${details.data.mainFeatures.sensors}</p>
+                    <hr>
+
+                    <h6 style='border-bottom:1px solid gray; ' class='w-50 p-1 bold'>Other Features</h6>
+                    <p >Bluetooth: ${details.data.others.Bluetooth}</p>
+                    <p > GPS:${details.data.others.GPS}</p>
+                    <p > NFC: ${details.data.others.NFC}</p>
+                    <p >NFC: ${details.data.others.Radio}</p>
+                    <p > NFC: ${details.data.others.USB}</p>
+                    <p > NFC: ${details.data.others.WLAN}</p>
+
                 </div>
                 </div>
                 </div>
