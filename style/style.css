@@ -9,3 +9,42 @@ a,
 span {
     font-family: 'Roboto', sans-serif;
 }
+
+
+.custom-button-style {
+    border: .15rem solid red;
+    padding: .40rem 2rem;
+    background: #fff;
+    color: black;
+    font-size: 1.2rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    border-radius: .25rem;
+}
+
+.custom-button-style::before {
+    content: "";
+    width: 0%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: black;
+    z-index: -1;
+    transition: 0.3s linear;
+
+}
+
+.custom-button-style:hover {
+    color: white;
+}
+
+.custom-button-style:hover::before {
+    content: "";
+    left: 0;
+    width: 100%;
+    color: white;
+
+}
