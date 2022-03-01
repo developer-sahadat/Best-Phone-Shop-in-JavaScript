@@ -36,7 +36,7 @@ document.getElementById('search_btn').addEventListener('click', ()=>{
                 main_parent('block')
             
         }else{
-            const url=`https://openapi.programming-hero.com/api/phones?search=${input_field}`
+            const url=`https://openapi.programming-hero.com/api/phones?search=${input_field.toLocaleLowerCase()}`
             fetch(url)
             .then(Response=>Response.json())
             .then(data=>products_section(data.data.slice(0,20)))
@@ -75,7 +75,7 @@ const products_section=(phones)=>{
                     const div=document.createElement('div');
 
                     div.innerHTML=`
-                    <div class="shadow rounded-3 p-3">
+                    <div class="shadow rounded-3 p-3 bg-white">
                     <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
                     <h6 class="card-title fw-bolder py-1">Name: ${phone.phone_name}</h6>
