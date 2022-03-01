@@ -32,7 +32,7 @@ document.getElementById('search_btn').addEventListener('click', ()=>{
 
             // loading Spinner off
              loadingSpinner('none')
-              // main parent off
+              // main parent show
                 main_parent('block')
             
         }else{
@@ -63,7 +63,7 @@ const products_section=(phones)=>{
             // loading Spinner off
               loadingSpinner('none')
 
-            // main parent off
+            // main parent show
             main_parent('block')
         }else{
                 const parent=document.getElementById('products-section')
@@ -76,11 +76,11 @@ const products_section=(phones)=>{
 
                     div.innerHTML=`
                     <div class="shadow rounded-3 p-3">
-                    <img src="${phone.image}" class="card-img-top" alt="...">
+                    <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title fw-bolder py-2">Name: ${phone.phone_name}</h5>
-                    <h5 class="card-title fw-bolder">Brand: ${phone.brand}</h5>
-                    <button href="#" class="custom-button-style my-3" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="products_details('${phone.slug}')">Details Now</button>
+                    <h6 class="card-title fw-bolder py-1">Name: ${phone.phone_name}</h6>
+                    <p class="fw-bolder">Brand: ${phone.brand}</p>
+                    <button href="#" class="custom-button-style my-2" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="products_details('${phone.slug}')">Details Now</button>
                     </div>
                     </div>`
 
@@ -88,9 +88,10 @@ const products_section=(phones)=>{
 
                 })
             
-        // loading Spinner show
-        loadingSpinner('none')
-        // main parent off
+        // loading Spinner off
+         loadingSpinner('none')
+
+        // main parent show
          main_parent('block')
         }
 
