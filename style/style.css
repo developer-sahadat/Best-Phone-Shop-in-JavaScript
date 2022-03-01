@@ -55,3 +55,10 @@ span {
     padding: 3rem 0;
     color: red;
 }
+
+/* -------Spinner loading code--------- */
+#spinner_loading {
+    text-align: center;
+    margin-top: 250px;
+    display: none;
+}

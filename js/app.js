@@ -1,6 +1,25 @@
+// -------Spinner loading code---------
+const loadingSpinner=show=>{
+    document.getElementById('spinner_loading').style.display=`${show}`
+}
+
+// main parent
+
+const main_parent=show=>{
+    document.getElementById('main-section').style.display=`${show}`
+}
+
+
 /*----------------- Search product code start now--------------------*/
 
 document.getElementById('search_btn').addEventListener('click', ()=>{
+
+        // loading Spinner show
+        loadingSpinner('block')
+
+        // main parent off
+        main_parent('none')
+
         // search input field
         const input_field=document.getElementById('search-input').value;
 
@@ -10,6 +29,11 @@ document.getElementById('search_btn').addEventListener('click', ()=>{
             h2.innerText='Plsease search by entering the product name'
             document.getElementById('products-section').textContent=''
             document.getElementById('product-details-page').textContent=''
+
+            // loading Spinner off
+             loadingSpinner('none')
+              // main parent off
+                main_parent('block')
             
         }else{
             const url=`https://openapi.programming-hero.com/api/phones?search=${input_field}`
@@ -36,6 +60,11 @@ const products_section=(phones)=>{
             h2.innerText=`Oops! We couldn't find results for your search:`
             document.getElementById('products-section').textContent=''
             document.getElementById('product-details-page').textContent=''
+            // loading Spinner off
+              loadingSpinner('none')
+
+            // main parent off
+            main_parent('block')
         }else{
                 const parent=document.getElementById('products-section')
                     parent.textContent='';
@@ -58,7 +87,11 @@ const products_section=(phones)=>{
                 parent.appendChild(div)
 
                 })
-
+            
+        // loading Spinner show
+        loadingSpinner('none')
+        // main parent off
+         main_parent('block')
         }
 
        
